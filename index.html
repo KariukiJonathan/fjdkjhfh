@@ -143,15 +143,22 @@
 
     <script>
       function moveAndShake() {
+        let mySound = new Audio("bellnoti.mp3");
         const bellContainer = document.getElementById("bell-container");
         const notificationPanel = document.getElementById("notification-panel");
         const notificationPanel2 = document.getElementById(
           "notification-panel-2"
         );
-        //const rect = document.getElementById("fade-in-rectangle");
 
         bellContainer.style.animation = "none"; // Remove the existing animation
         bellContainer.style.transform = "translateX(-100px)"; // Move 100px to the left
+
+        bellContainer.addEventListener("click", () => {
+          mySound.play();
+          setTimeout(() => {
+            mySound.pause();
+          }, 10000);
+        });
 
         // After a short delay, reapply the animation and show the panel
         setTimeout(() => {
@@ -166,6 +173,8 @@
           notificationPanel2.style.height = "100px"; // Expand the second panel
           notificationPanel2.style.opacity = "1"; // Fade in the second panel
         }, 1200);
+
+        // Assuming you have a container element
       }
     </script>
   </body>
